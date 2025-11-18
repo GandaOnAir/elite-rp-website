@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elite RP | FiveM Roleplay</title>
+  <meta name="description" content="Elite RP • Server FiveM Roleplay italiano. Unisciti alla community, leggi il regolamento e inizia a giocare oggi stesso." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: #0f151b;
+      --panel-2: #121a22;
+      --text: #dbe3ec;
+      --muted: #8a98a9;
+      --accent: #38f378; /* neon green */
+      --accent-2: #1ee0a1;
+      --danger: #ff4d6d;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--text); background:linear-gradient(180deg, #070a0f, var(--bg));}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    
+    /* Navbar */
+    .nav{position:sticky; top:0; z-index:99; backdrop-filter: blur(10px); background:rgba(11,15,20,0.7); border-bottom:1px solid rgba(255,255,255,0.06)}
+    .nav .row{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:16px 20px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:36px; height:36px; border-radius:10px; background:radial-gradient(circle at 30% 30%, var(--accent), #0affb4 50%, #0b0f14 70%); box-shadow:0 0 24px rgba(56,243,120,0.35)}
+    .brand h1{font:800 18px Montserrat, sans-serif; letter-spacing:0.8px; margin:0}
+    .nav a.btn{padding:10px 16px; border:1px solid rgba(56,243,120,0.4); border-radius:12px; color:var(--accent); transition:.2s; font-weight:600}
+    .nav a.btn:hover{background:rgba(56,243,120,0.1)}
+    .menu{display:flex; gap:14px; align-items:center}
+    .menu a{padding:8px 10px; border-radius:10px; color:var(--muted); font-weight:600}
+    .menu a:hover{color:var(--text)}
+    
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero .wrap{max-width:1200px; margin:0 auto; padding:96px 20px 72px; display:grid; grid-template-columns: 1.2fr 1fr; gap:36px}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:rgba(56,243,120,0.1); border:1px solid rgba(56,243,120,0.3); color:var(--accent); font-weight:700; letter-spacing:.4px}
+    .hero h2{font:800 48px/1.05 Montserrat, sans-serif; margin:14px 0 10px}
+    .hero p{color:var(--muted); font-size:18px; margin:0 0 26px}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#00150a; border:none; padding:14px 20px; border-radius:14px; font-weight:800; box-shadow:0 8px 30px rgba(56,243,120,0.25); transition:.2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{padding:14px 18px; border:1px solid rgba(255,255,255,0.1); border-radius:14px; color:var(--text); font-weight:700}
+    .hero .panel{background:radial-gradient(1000px 600px at 80% -10%, rgba(56,243,120,0.12), transparent), var(--panel); border:1px solid rgba(255,255,255,0.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .codecard{background:var(--panel-2); border:1px dashed rgba(56,243,120,0.4); padding:16px; border-radius:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:#c2f7da}
+    .copy{cursor:pointer; font-size:12px; color:var(--muted); text-decoration:underline}
+
+    /* Sections */
+    section{padding:72px 20px}
+    .container{max-width:1200px; margin:0 auto}
+    .section-title{font:800 32px Montserrat, sans-serif; margin:0 0 12px}
+    .section-sub{color:var(--muted); margin:0 0 24px}
+
+    /* Grid cards */
+    .grid{display:grid; gap:18px}
+    .grid.features{grid-template-columns:repeat(3, 1fr)}
+    .grid.staff{grid-template-columns:repeat(4, 1fr)}
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,0.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:10px 0 6px; font:700 18px Montserrat}
+    .card p{margin:0; color:var(--muted)}
+    .staff .avatar{width:80px; height:80px; border-radius:16px; background:radial-gradient(circle at 30% 30%, #1c2832, #0c1217); border:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; font:800 28px Montserrat; color:var(--accent)}
+    .role{display:inline-block; margin-top:6px; padding:6px 10px; border-radius:999px; background:rgba(56,243,120,0.12); border:1px solid rgba(56,243,120,0.35); color:var(--accent); font-weight:700; font-size:12px}
+
+    /* Rules list preview */
+    .rules{columns:2; column-gap:24px}
+    .rules li{margin-bottom:10px; color:var(--muted)}
+
+    /* Footer */
+    footer{padding:48px 20px; border-top:1px solid rgba(255,255,255,0.06); background:#0a0e13}
+    .foot{max-width:1200px; margin:0 auto; display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+    .foot small{color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero .wrap{grid-template-columns:1fr}
+      .grid.features{grid-template-columns:repeat(2, 1fr)}
+      .grid.staff{grid-template-columns:repeat(2, 1fr)}
+      .rules{columns:1}
+    }
+    @media (max-width: 560px){
+      .hero h2{font-size:36px}
+    }
+  </style>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" />
+  <style>
+    /* Logo image override */
+    .logoimg{width:36px;height:36px;border-radius:10px;box-shadow:0 0 24px rgba(56,243,120,0.45);object-fit:cover;border:1px solid rgba(56,243,120,0.35)}
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="row">
+      <div class="brand">
+        <img class="logoimg" src="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" alt="Elite RP logo" />
+        <h1>Elite RP</h1>
+      </div>
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="#features">Caratteristiche</a>
+        <a href="#staff">Staff</a>
+        <a href="#join">Entra</a>
+        <a class="btn" href="https://discord.gg/wjJrbqTuTu" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <span class="badge">Server FiveM • RolePlay ITA</span>
+        <h2>Vivi il RolePlay che meriti.<br/>Benvenuto su <span style="color:var(--accent)">Elite RP</span>.</h2>
+        <p>Server ottimizzato, regolamento chiaro, community attiva. Entra in città, crea la tua storia e rispetta le regole: qualità prima di tutto.</p>
+        <div class="cta">
+          <a class="btn-primary" href="#join">Connettiti ora</a>
+          <a class="btn-ghost" href="#rules">Leggi il regolamento</a>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <div class="codecard">
+            <strong>IP/Endpoint FiveM</strong><br/>
+            <code id="ip">fivem://connect.ip:30120</code> &nbsp; <span class="copy" onclick="copyIP()">copia</span>
+          </div>
+          <p style="margin:10px 0 0; color:var(--muted)">Sostituisci l'endpoint con quello reale quando è pronto.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <img alt="Hero City" src="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" style="border-radius:14px; border:1px solid rgba(255,255,255,0.06)"/>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h3 class="section-title">Cos'è Elite RP</h3>
+      <p class="section-sub">Un server FiveM fondato su rispetto, realismo e divertimento. Qui il RolePlay viene prima del grind: creiamo scene credibili, diamo spazio a tutti e facciamo crescere le storie nel tempo.</p>
+      <div class="grid features">
+        <div class="card">
+          <h3>Performance</h3>
+          <p>Server stabile e ottimizzato per scene fluide e senza lag, anche nelle azioni più complesse.</p>
+        </div>
+        <div class="card">
+          <h3>Regolamento chiaro</h3>
+          <p>Linee guida semplici e trasparenti per evitare confusioni e favorire il buon RP.</p>
+        </div>
+        <div class="card">
+          <h3>Community</h3>
+          <p>Staff presente, player collaborativi, zero tossicità: qui si gioca per creare buone storie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+<section id="gallery">
+  <div class="container">
+    <h3 class="section-title">Galleria</h3>
+    <p class="section-sub">Screenshot e momenti dalla città.</p>
+
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:12px">
+      <div class="card"><img src="https://i.postimg.cc/RFhggH9G/Screenshot-2025-11-08-183012.png" alt="Elite background" style="border-radius:12px"></div>
+      <div class="card"><img src="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" alt="Elite logo" style="border-radius:12px"></div>
+
+      <!-- Sostituisci questi placeholder con i tuoi screenshot -->
+      <div class="card"><img src="https://i.postimg.cc/QC99YXHT/Screenshot-2025-11-08-184959.png" alt="Screenshot 1" style="border-radius:12px"></div>
+      <div class="card"><img src="https://i.postimg.cc/ZnFv3wg1/Screenshot-2025-11-08-182310.png" alt="Screenshot 2" style="border-radius:12px"></div>
+      <div class="card"><img src="https://i.postimg.cc/W1JjHdN9/Screenshot-2025-11-08-182652.png" alt="Screenshot 3" style="border-radius:12px"></div>
+      <div class="card"><img src="https://i.postimg.cc/3JXFCBps/Screenshot-2025-11-08-174230.png" alt="Screenshot 4" style="border-radius:12px"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- Staff -->
+  <section id="staff">
+    <div class="container">
+      <h3 class="section-title">Staff</h3>
+      <p class="section-sub">Chi lavora dietro le quinte per tenere la città viva e funzionante.</p>
+      <div class="grid staff">
+        <div class="card">
+          <div class="avatar">N</div>
+          <h3>Nitto</h3>
+          <span class="role">Dev</span>
+          <p>Development & ottimizzazione scripts, qualità e performance lato server.</p>
+        </div>
+        <div class="card">
+          <div class="avatar">G</div>
+          <h3>Ganda</h3>
+          <span class="role">Owner</span>
+          <p>Coordinamento regolamento & staff, qualità del RolePlay.</p>
+        </div>
+        <div class="card">
+          <div class="avatar">D</div>
+          <h3>Doctoreffe</h3>
+          <span class="role">Owner</span>
+          <p>Visione di progetto, gestione community, direzione operativa.</p>
+        </div>
+        <div class="card">
+          <div class="avatar">H</div>
+          <h3>Horcrux</h3>
+          <span class="role">Owner</span>
+          <p>Eventi, bilanciamento fazioni, supporto all’utenza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regole (anteprima) -->
+  <section id="rules">
+    <div class="container">
+      <h3 class="section-title">Regole principali</h3>
+      <p class="section-sub">Qui un estratto; il documento completo è disponibile in download.</p>
+      <div class="card">
+        <ol class="rules">
+          <li>No Metagame, No Powergame.</li>
+          <li>No Stream Sniping, no exploit/cheat.</li>
+          <li>RDM/VDM vietati; rispetta le scene in corso.</li>
+          <li>Il Fail-RP viene sanzionato; porta sempre a termine la scena.</li>
+          <li>Medici e strutture sanitarie: fazione neutrale.</li>
+          <li>Assalti/rapimenti: motivazione RP valida e rispetto dei cap.</li>
+          <li>Registrazioni valide solo con telefonino o GoPro in hotbar.</li>
+          <li>Safe zone e semi-safe zone: vedi regolamento completo.</li>
+        </ol>
+        <div style="display:flex; gap:12px; margin-top:6px; flex-wrap:wrap">
+          <a class="btn-primary" href="regolamento.html" target="_blank" rel="noopener">Regolamento</a>
+          <a class="btn-ghost" href="#discord">Chiedi allo staff</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section id="join">
+    <div class="container">
+      <h3 class="section-title">Come entrare</h3>
+      <p class="section-sub">Installa FiveM, avvia e connettiti con l’endpoint del server. Entra nel Discord per whitelist, annunci e supporto.</p>
+      <div class="grid" style="grid-template-columns: 1.2fr 1fr; gap:18px">
+        <div class="card">
+          <h3>Passi rapidi</h3>
+          <ol style="color:var(--muted)">
+            <li>Scarica e installa <strong>FiveM</strong>.</li>
+            <li>Apri FiveM e premi <strong>F8</strong>.</li>
+            <li>Digita: <code>connect ip:30120</code> (sostituisci con quello reale).</li>
+            <li>Unisciti al <a href="https://discord.gg/wjJrbqTuTu" target="_blank" rel="noopener" style="color:var(--accent)"><strong>Discord</strong></a> per whitelist & news.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Link utili</h3>
+          <ul style="list-style: none; padding-left:0; margin:0; color:var(--muted)">
+            <li>📥 <a id="download-regolamento" href="regolamento.html" target="_blank" rel="noopener">Regolamento</a></li>
+            <li>📝 <a href="https://discordapp.com/channels/1432375696373711038/1432375698852679753" target="_blank" rel="noopener">Modulo Whitelist</a></li>
+</a></li>
+            <li>🎵 <a href="#" onclick="alert('Inserisci qui il link del profilo TikTok ufficiale.'); return false;">TikTok ufficiale</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discord -->
+  <section id="discord">
+    <div class="container">
+      <h3 class="section-title">Discord</h3>
+      <p class="section-sub">Centro nevralgico di Elite RP: annunci, ticket, whitelist, guide e supporto live.</p>
+      <div class="card" style="display:grid; grid-template-columns: 1fr; gap:16px">
+        <a class="btn-primary" href="https://discord.gg/wjJrbqTuTu" target="_blank" rel="noopener">Unisciti al Discord</a>
+        <p style="color:var(--muted); margin:6px 0 0">Ti aspettiamo.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div class="brand" style="gap:10px">
+        <strong>Elite RP</strong>
+      </div>
+      <small>© <span id="year"></span> Elite RP • FiveM server. Non affiliato a Rockstar Games o Take-Two.</small>
+    </div>
+  </footer>
+
+  <script>
+    function copyIP(){
+      const ip = document.getElementById('ip').textContent.trim();
+      navigator.clipboard.writeText(ip).then(()=>{
+        const el = document.querySelector('.copy');
+        el.textContent = 'copiato!';
+        setTimeout(()=> el.textContent = 'copia', 1500);
+      });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

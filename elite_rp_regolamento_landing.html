@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regolamento • Elite RP</title>
+  <meta name="description" content="Regolamento ufficiale di Elite RP, server FiveM Roleplay italiano." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070a0f;
+      --panel:#0e1319;
+      --text:#eaf3ea;
+      --muted:#93a2b2;
+      --accent:#38f378;
+      --radius:18px;
+      --page-max:1200px;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#0b0f14);
+      color:var(--text);
+      font-family:Inter,system-ui,Arial,sans-serif;
+    }
+
+    a{color:var(--accent);text-decoration:none;}
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:5;
+      background:rgba(7,10,15,.75);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 6px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+.logo{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background-image:url('https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  box-shadow:0 0 18px rgba(56,243,120,.45);
+    }
+    .brand b{font:800 18px Montserrat;}
+
+    .btn{
+      padding:10px 14px;
+      border:1px solid rgba(56,243,120,.35);
+      border-radius:12px;
+      color:var(--accent);
+      font-weight:700;
+      background:transparent;
+      cursor:pointer;
+    }
+
+    header{padding:56px 0 24px;}
+
+    /* DISTANZE CHE HAI CHIESTO */
+    header span.btn { margin-bottom: 18px !important; }
+    h1 { margin-top: 16px !important; }
+
+    h1{
+      font:800 40px/1.05 Montserrat;
+      margin:8px 0;
+    }
+    p.lead{color:var(--muted);font-size:18px;margin:0;}
+
+    /* PANELS */
+    .panel{
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      padding:18px;
+      max-width:100%;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 340px;
+      gap:18px;
+    }
+
+    footer{
+      margin:40px 0 20px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* CARD NAV */
+    .rule-card{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:18px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(56,243,120,0.04), rgba(56,243,120,0.02));
+      border:1px solid rgba(56,243,120,0.15);
+      color:var(--text);
+      transition:.12s;
+      min-width:220px;
+      scroll-snap-align:center;
+    }
+    .rule-card h4{margin:0;font:700 15px Montserrat;color:var(--accent);}
+    .rule-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 32px rgba(0,0,0,.6);
+    }
+    .rule-card.active{
+      border:2px solid var(--accent);
+      box-shadow:0 0 16px rgba(56,243,120,.6);
+    }
+
+    .rule-detail h3{margin-top:0;}
+
+    .rules-header{
+      margin-bottom:10px;
+    }
+    .rules-header .search-row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom:8px;
+    }
+    #ruleSearch{
+      flex:1;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(56,243,120,.25);
+      background:#0e1319;
+      color:#eaf3ea;
+    }
+    .section-sub{
+      text-align:center;
+      margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .hscroll{
+      display:grid;
+      grid-template-columns:38px 1fr 38px;
+      align-items:stretch;
+      gap:10px;
+      margin-top:12px;
+    }
+    .hscroll .tray{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding:6px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      background:rgba(56,243,120,.03);
+    }
+
+    .scroll-btn{
+      width:38px;height:38px;border-radius:50%;
+      border:1px solid rgba(56,243,120,.35);
+      background:rgba(56,243,120,.12);
+      color:var(--accent);
+      font-weight:900;
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    /* DISTANZA CHE HAI CHIESTO SUI BOTTONI */
+    .dl { margin-top: 18px !important; }
+
+    @media(max-width:800px){
+      .grid{ grid-template-columns:1fr; }
+      .rule-card{ min-width:200px;padding:12px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap row">
+      <div class="brand">
+        <div class="logo"></div>
+        <b>Elite RP</b>
+      </div>
+      <div class="actions">
+        <a class="btn" href="index.html">← Torna alla Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <header>
+      <span class="btn" style="background:rgba(56,243,120,.1)">Regolamento</span>
+      <h1>Regolamento Ufficiale</h1>
+      <p class="lead">Questa pagina ospita il regolamento completo di Elite RP. In caso di differenze tra versioni, fa fede l'ultima versione pubblicata qui.</p>
+    </header>
+
+    <div class="grid">
+
+      <!-- COLONNA SINISTRA -->
+      <section class="panel" id="contenuto">
+
+        <div class="rules-header">
+          <div class="search-row">
+            <input id="ruleSearch" type="search" placeholder="Cerca nel regolamento… (titoli sezioni)">
+            <button id="clearSearch" class="btn">Pulisci</button>
+          </div>
+          <p class="section-sub">Clicca su una sezione per aprire il relativo estratto del regolamento.</p>
+        </div>
+
+        <!-- BAR NAV -->
+        <div class="hscroll">
+          <button class="scroll-btn left">‹</button>
+          <div class="tray" id="ruleTray">
+            <a class="rule-card" data-target="regolamento"><h4>REGOLAMENTO</h4></a>
+            <a class="rule-card" data-target="generale"><h4>REGOLAMENTO GENERALE</h4></a>
+            <a class="rule-card" data-target="permadeath"><h4>REGOLAMENTO PERMADEATH</h4></a>
+            <a class="rule-card" data-target="gang"><h4>REGOLAMENTO GANG</h4></a>
+            <a class="rule-card" data-target="polizia"><h4>REGOLAMENTO POLIZIA</h4></a>
+            <a class="rule-card" data-target="medici"><h4>REGOLAMENTO MEDICI</h4></a>
+            <a class="rule-card" data-target="lavorinw"><h4>REGOLAMENTO LAVORI NO WHITELISTATI</h4></a>
+            <a class="rule-card" data-target="criminalita"><h4>REGOLAMENTO CRIMINALITÀ</h4></a>
+          </div>
+          <button class="scroll-btn right">›</button>
+        </div>
+
+        <!-- CONTENUTI -->
+        <div id="detail" style="margin-top:18px;">
+
+          <!-- REGOLAMENTO -->
+          <section id="regolamento" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO</h3>
+
+            <h4>Severamente Vietato</h4>
+            <p>
+              • Metagame, powergame, uso improprio di informazioni OOC.<br>
+              • RDM/VDM, fail-RP, comportamenti irrealistici.<br>
+              • Insulti, minacce, molestie.<br>
+              • Cheat, exploit, bug abuse.<br>
+              • Troll e comportamenti antisociali.
+            </p>
+
+            <h4>Definizioni</h4>
+            <p>
+              • <b>IC</b>: gioco del personaggio.<br>
+              • <b>OOC</b>: comunicazioni esterne.<br>
+              • <b>DM</b>: violenza senza motivo.<br>
+              • <b>PK</b>: perdita memoria parziale.<br>
+              • <b>Perma</b>: morte definitiva del PG.
+            </p>
+          </section>
+
+          <!-- GENERALE -->
+          <section id="generale" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO GENERALE</h3>
+            <p>
+              • Mantieni un comportamento coerente RP.<br>
+              • Rispetta giocatori e staff.<br>
+              • Usa armi e veicoli in modo realistico.<br>
+            </p>
+
+            <h4>Safe Zone</h4>
+            <p>
+              • Ospedale e negozi protetti.<br>
+              • Vietate azioni ostili salvo permesso staff.
+            </p>
+
+            <h4>Assistenze e Chat</h4>
+            <p>
+              • Ticket solo con prove.<br>
+              • Comandi /me /do usati correttamente.
+            </p>
+
+            <h4>Ferimento / Coma</h4>
+            <p>
+              • Ruola dolore e recupero.<br>
+              • Dopo il coma parte dell’azione viene dimenticata.
+            </p>
+          </section>
+
+          <!-- PERMADEATH -->
+          <section id="permadeath" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO PERMADEATH</h3>
+            <p>
+              • Evento definitivo, richiede ticket staff.<br>
+              • Nuovo PG senza collegamenti col vecchio.
+            </p>
+          </section>
+
+          <!-- GANG -->
+          <section id="gang" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO GANG</h3>
+            <p>
+              • Identità chiara e attività criminali coerenti.<br>
+              • Conflitti solo con base RP.<br>
+              • Quartieri regolati via ticket.
+            </p>
+          </section>
+
+          <!-- POLIZIA -->
+          <section id="polizia" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO POLIZIA</h3>
+            <p>
+              • Uso proporzionato della forza.<br>
+              • Arresti e indagini con base RP.<br>
+              • FBI come supporto investigativo.
+            </p>
+          </section>
+
+          <!-- MEDICI -->
+          <section id="medici" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO MEDICI</h3>
+            <p>
+              • Fazione neutrale.<br>
+              • Interventi sanitari sempre ruolati.<br>
+              • Non ostaggi salvo approvazione staff.
+            </p>
+          </section>
+
+          <!-- LAVORI NO WL -->
+          <section id="lavorinw" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO LAVORI NO WHITELISTATI</h3>
+            <p>
+              • Rispetta percorsi farming.<br>
+              • Non ostacolare lavoratori.<br>
+              • Vietato AFK farming.
+            </p>
+          </section>
+
+          <!-- CRIMINALITÀ -->
+          <section id="criminalita" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO CRIMINALITÀ</h3>
+
+            <h4>Droghe</h4>
+            <p>• Raccolta e produzione ruolate.</p>
+
+            <h4>Rapine</h4>
+            <p>• Richiedono trattativa chiara con polizia.</p>
+
+            <h4>Azioni illegali</h4>
+            <p>• Servono motivazioni RP forti.</p>
+
+            <h4>Furti</h4>
+            <p>
+              • Contestualizzati e non seriali.<br>
+              • Limiti armi e numero partecipanti.
+            </p>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- COLONNA DESTRA – SOLO DISCORD -->
+      <aside class="panel">
+        <h3 style="margin-top:0">Collegamenti Utili</h3>
+        <div class="dl">
+          <a class="btn" href="https://discord.gg/wjJrbqTuTu" target="_blank">Discord</a>
+        </div>
+
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,.08);margin:18px 0">
+
+        <p style="color:var(--muted);font-size:14px">
+          Ultimo aggiornamento: <span id="last">—</span>
+        </p>
+      </aside>
+
+    </div>
+
+    <section class="panel" style="margin-top:18px;">
+      <h3>Note</h3>
+      <ul style="color:var(--muted);">
+        <li>Il regolamento può essere aggiornato senza preavviso.</li>
+        <li>Controlla il canale <b>#annunci</b> su Discord.</li>
+      </ul>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Elite RP • FiveM server
+    </footer>
+
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('last').textContent = new Date().toLocaleDateString('it-IT');
+
+    (function(){
+      const cards = document.querySelectorAll('.rule-card');
+      const details = document.querySelectorAll('.rule-detail');
+
+      function showSection(id){
+        details.forEach(d => d.style.display = (d.id === id ? 'block' : 'none'));
+        cards.forEach(c => c.classList.toggle('active', c.dataset.target === id));
+        history.replaceState(null, '', '#' + id);
+      }
+
+      cards.forEach(card =>{
+        card.addEventListener('click', e =>{
+          e.preventDefault();
+          showSection(card.dataset.target);
+        });
+      });
+
+      const initial = location.hash.replace('#','');
+      if(initial && document.getElementById(initial)){
+        showSection(initial);
+      } else {
+        showSection(cards[0].dataset.target);
+      }
+
+      const search = document.getElementById('ruleSearch');
+      const clear = document.getElementById('clearSearch');
+
+      function filter(){
+        const term = search.value.toLowerCase();
+        cards.forEach(card =>{
+          const show = !term || card.textContent.toLowerCase().includes(term);
+          card.style.display = show ? '' : 'none';
+        });
+      }
+
+      search.addEventListener('input', filter);
+      clear.addEventListener('click', ()=>{
+        search.value='';
+        filter();
+      });
+
+      const tray = document.getElementById('ruleTray');
+      const btnL = document.querySelector('.scroll-btn.left');
+      const btnR = document.querySelector('.scroll-btn.right');
+
+      btnL.addEventListener('click', ()=> tray.scrollBy({left:-260, behavior:'smooth'}));
+      btnR.addEventListener('click', ()=> tray.scrollBy({left:260, behavior:'smooth'}));
+
+    })();
+  </script>
+
+</body>
+</html>
