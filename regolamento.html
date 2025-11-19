@@ -68,7 +68,7 @@
   background-position:center;
   background-repeat:no-repeat;
   box-shadow:0 0 18px rgba(56,243,120,.45);
-    }
+}
     .brand b{font:800 18px Montserrat;}
 
     .btn{
@@ -79,11 +79,11 @@
       font-weight:700;
       background:transparent;
       cursor:pointer;
+      display:inline-block;
     }
 
     header{padding:56px 0 24px;}
 
-    /* DISTANZE CHE HAI CHIESTO */
     header span.btn { margin-bottom: 18px !important; }
     h1 { margin-top: 16px !important; }
 
@@ -140,11 +140,7 @@
       box-shadow:0 0 16px rgba(56,243,120,.6);
     }
 
-    .rule-detail h3{margin-top:0;}
-
-    .rules-header{
-      margin-bottom:10px;
-    }
+    .rules-header{margin-bottom:10px;}
     .rules-header .search-row{
       display:flex;
       gap:10px;
@@ -159,6 +155,7 @@
       background:#0e1319;
       color:#eaf3ea;
     }
+
     .section-sub{
       text-align:center;
       margin-top:6px;
@@ -166,6 +163,27 @@
       font-size:14px;
     }
 
+    /* SCROLLBAR TRASPARENTE (tray) */
+    .tray::-webkit-scrollbar{
+      height:8px;
+      background:transparent;
+    }
+
+    .tray {
+  overscroll-behavior: contain;
+}
+
+    .tray::-webkit-scrollbar-thumb{
+      background:rgba(255,255,255,0.25);
+      border-radius:10px;
+      opacity:0;
+      transition:opacity .25s;
+    }
+    .tray.scrolling::-webkit-scrollbar-thumb{
+      opacity:1;
+    }
+
+    /* HSCROLL */
     .hscroll{
       display:grid;
       grid-template-columns:38px 1fr 38px;
@@ -173,34 +191,58 @@
       gap:10px;
       margin-top:12px;
     }
-    .hscroll .tray{
-      display:flex;
-      gap:10px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      padding:6px;
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:12px;
-      background:rgba(56,243,120,.03);
-    }
 
+   .tray{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  scroll-padding: 10px;
+  padding:6px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;
+  background:rgba(56,243,120,.03);
+}
+
+    /* FRECCE NUOVE STILE DISCORD */
     .scroll-btn{
-      width:38px;height:38px;border-radius:50%;
-      border:1px solid rgba(56,243,120,.35);
-      background:rgba(56,243,120,.12);
-      color:var(--accent);
-      font-weight:900;
+      position:relative;
+      top: 40px; /* regola questo numero se vuoi abbassarle o alzarle di più */
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      background:rgba(0,0,0,0.5);
+      color:white;
+      border:none;
+      font-size:32px;
       cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:20;
+      transition:background .2s;
     }
+    .scroll-btn:hover{
+      background:rgba(0,0,0,0.7);
+    }
+    .scroll-btn.left{ left:-5px; }
+    .scroll-btn.right{ right:-5px; }
 
-    /* DISTANZA CHE HAI CHIESTO SUI BOTTONI */
-    .dl { margin-top: 18px !important; }
+    /* BOTTONCINO #ANNUNCI */
+    .annunci-btn{
+      padding:1px 3px;
+      border:1px solid rgba(56,243,120,0.35);
+      border-radius:10px;
+      background:rgba(56,243,120,0.1);
+      color:var(--accent);
+      font-weight:700;
+    }
 
     @media(max-width:800px){
       .grid{ grid-template-columns:1fr; }
       .rule-card{ min-width:200px;padding:12px; }
     }
+
   </style>
 </head>
 
@@ -229,7 +271,7 @@
 
     <div class="grid">
 
-      <!-- COLONNA SINISTRA -->
+      <!-- SINISTRA -->
       <section class="panel" id="contenuto">
 
         <div class="rules-header">
@@ -243,6 +285,7 @@
         <!-- BAR NAV -->
         <div class="hscroll">
           <button class="scroll-btn left">‹</button>
+
           <div class="tray" id="ruleTray">
             <a class="rule-card" data-target="regolamento"><h4>REGOLAMENTO</h4></a>
             <a class="rule-card" data-target="generale"><h4>REGOLAMENTO GENERALE</h4></a>
@@ -253,6 +296,7 @@
             <a class="rule-card" data-target="lavorinw"><h4>REGOLAMENTO LAVORI NO WHITELISTATI</h4></a>
             <a class="rule-card" data-target="criminalita"><h4>REGOLAMENTO CRIMINALITÀ</h4></a>
           </div>
+
           <button class="scroll-btn right">›</button>
         </div>
 
@@ -285,78 +329,46 @@
           <!-- GENERALE -->
           <section id="generale" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO GENERALE</h3>
-            <p>
-              • Mantieni un comportamento coerente RP.<br>
-              • Rispetta giocatori e staff.<br>
-              • Usa armi e veicoli in modo realistico.<br>
-            </p>
+            <p>• Mantieni un comportamento coerente RP.<br>• Rispetta giocatori e staff.<br>• Usa armi e veicoli in modo realistico.</p>
 
             <h4>Safe Zone</h4>
-            <p>
-              • Ospedale e negozi protetti.<br>
-              • Vietate azioni ostili salvo permesso staff.
-            </p>
+            <p>• Ospedale e negozi protetti.<br>• Vietate azioni ostili salvo permesso staff.</p>
 
             <h4>Assistenze e Chat</h4>
-            <p>
-              • Ticket solo con prove.<br>
-              • Comandi /me /do usati correttamente.
-            </p>
+            <p>• Ticket solo con prove.<br>• Comandi /me /do usati correttamente.</p>
 
             <h4>Ferimento / Coma</h4>
-            <p>
-              • Ruola dolore e recupero.<br>
-              • Dopo il coma parte dell’azione viene dimenticata.
-            </p>
+            <p>• Ruola dolore e recupero.<br>• Dopo il coma parte dell’azione viene dimenticata.</p>
           </section>
 
           <!-- PERMADEATH -->
           <section id="permadeath" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO PERMADEATH</h3>
-            <p>
-              • Evento definitivo, richiede ticket staff.<br>
-              • Nuovo PG senza collegamenti col vecchio.
-            </p>
+            <p>• Evento definitivo, richiede ticket staff.<br>• Nuovo PG senza collegamenti col vecchio.</p>
           </section>
 
           <!-- GANG -->
           <section id="gang" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO GANG</h3>
-            <p>
-              • Identità chiara e attività criminali coerenti.<br>
-              • Conflitti solo con base RP.<br>
-              • Quartieri regolati via ticket.
-            </p>
+            <p>• Identità chiara e attività criminali coerenti.<br>• Conflitti solo con base RP.<br>• Quartieri regolati via ticket.</p>
           </section>
 
           <!-- POLIZIA -->
           <section id="polizia" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO POLIZIA</h3>
-            <p>
-              • Uso proporzionato della forza.<br>
-              • Arresti e indagini con base RP.<br>
-              • FBI come supporto investigativo.
-            </p>
+            <p>• Uso proporzionato della forza.<br>• Arresti e indagini con base RP.<br>• FBI come supporto investigativo.</p>
           </section>
 
           <!-- MEDICI -->
           <section id="medici" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO MEDICI</h3>
-            <p>
-              • Fazione neutrale.<br>
-              • Interventi sanitari sempre ruolati.<br>
-              • Non ostaggi salvo approvazione staff.
-            </p>
+            <p>• Fazione neutrale.<br>• Interventi sanitari sempre ruolati.<br>• Non ostaggi salvo approvazione staff.</p>
           </section>
 
           <!-- LAVORI NO WL -->
           <section id="lavorinw" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO LAVORI NO WHITELISTATI</h3>
-            <p>
-              • Rispetta percorsi farming.<br>
-              • Non ostacolare lavoratori.<br>
-              • Vietato AFK farming.
-            </p>
+            <p>• Rispetta percorsi farming.<br>• Non ostacolare lavoratori.<br>• Vietato AFK farming.</p>
           </section>
 
           <!-- CRIMINALITÀ -->
@@ -373,16 +385,13 @@
             <p>• Servono motivazioni RP forti.</p>
 
             <h4>Furti</h4>
-            <p>
-              • Contestualizzati e non seriali.<br>
-              • Limiti armi e numero partecipanti.
-            </p>
+            <p>• Contestualizzati e non seriali.<br>• Limiti armi e numero partecipanti.</p>
           </section>
 
         </div>
       </section>
 
-      <!-- COLONNA DESTRA – SOLO DISCORD -->
+      <!-- DESTRA -->
       <aside class="panel">
         <h3 style="margin-top:0">Collegamenti Utili</h3>
         <div class="dl">
@@ -402,7 +411,7 @@
       <h3>Note</h3>
       <ul style="color:var(--muted);">
         <li>Il regolamento può essere aggiornato senza preavviso.</li>
-        <li>Controlla il canale <b>#annunci</b> su Discord.</li>
+        <li>Controlla il canale <a class="annunci-btn" href="https://discord.com/channels/1432375696373711038/1432375698315804712" target="_blank">#annunci</a> su Discord.</li>
       </ul>
     </section>
 
@@ -457,12 +466,29 @@
         filter();
       });
 
+      /* SCROLL FRECCE */
       const tray = document.getElementById('ruleTray');
       const btnL = document.querySelector('.scroll-btn.left');
       const btnR = document.querySelector('.scroll-btn.right');
 
       btnL.addEventListener('click', ()=> tray.scrollBy({left:-260, behavior:'smooth'}));
       btnR.addEventListener('click', ()=> tray.scrollBy({left:260, behavior:'smooth'}));
+
+      /* ROTELLINA DEL MOUSE (solo quando il cursore è sopra la tray) */
+      tray.addEventListener('wheel', function(e){
+    // Sempre orizzontale, blocca lo scroll verticale
+    e.preventDefault();
+    const amount = (e.deltaY !== 0 ? e.deltaY : e.deltaX) * 2;
+tray.scrollLeft += amount;
+}, { passive:false });
+
+      /* SCROLLBAR APPARE SOLO DURANTE SCROLL */
+      let timeout;
+      tray.addEventListener('scroll', ()=>{
+        tray.classList.add('scrolling');
+        clearTimeout(timeout);
+        timeout = setTimeout(()=> tray.classList.remove('scrolling'), 1200);
+      });
 
     })();
   </script>
