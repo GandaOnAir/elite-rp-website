@@ -88,6 +88,99 @@
     @media (max-width: 560px){
       .hero h2{font-size:36px}
     }
+
+/* --- GALLERIA --- */
+.gallery-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.gallery-row {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0 20px;
+}
+
+.gallery-row::-webkit-scrollbar {
+    height: 8px;
+}
+
+.gallery-row::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+}
+
+.gallery-img {
+    height: 220px;
+    border-radius: 16px;
+    cursor: pointer;
+    object-fit: cover;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.35);
+    transition: transform .25s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+/* FRECCE */
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 12px;
+    z-index: 20;
+    transition: background .2s;
+}
+
+.gallery-arrow:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+.gallery-arrow.left {
+    left: -10px;
+}
+
+.gallery-arrow.right {
+    right: -10px;
+}
+
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 14px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 48px;
+    color: white;
+    cursor: pointer;
+}
+
   </style>
   <link rel="icon" type="image/png" href="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" />
   <style>
@@ -105,7 +198,7 @@
       </div>
       <div class="menu">
         <a href="#about">About</a>
-        <a href="#features">Caratteristiche</a>
+        <a href="#galleria">Galleria</a>
         <a href="#staff">Staff</a>
         <a href="#join">Entra</a>
         <a class="btn" href="https://discord.gg/wjJrbqTuTu" target="_blank" rel="noopener">Discord</a>
@@ -129,7 +222,7 @@
             <strong>IP/Endpoint FiveM</strong><br/>
             <code id="ip">fivem://connect.ip:30120</code> &nbsp; <span class="copy" onclick="copyIP()">copia</span>
           </div>
-          <p style="margin:10px 0 0; color:var(--muted)">Sostituisci l'endpoint con quello reale quando è pronto.</p>
+          <p style="margin:10px 0 0; color:var(--muted)">Entra e crea la tua storia.</p>
         </div>
       </div>
       <div class="panel">
@@ -142,42 +235,79 @@
   <section id="about">
     <div class="container">
       <h3 class="section-title">Cos'è Elite RP</h3>
-      <p class="section-sub">Un server FiveM fondato su rispetto, realismo e divertimento. Qui il RolePlay viene prima del grind: creiamo scene credibili, diamo spazio a tutti e facciamo crescere le storie nel tempo.</p>
+      <p class="section-sub">Un server FiveM costruito su rispetto, realismo e divertimento.
+Elite RP è una città viva, dove il RolePlay viene prima del grind: creiamo scene credibili, lasciamo spazio alle storie dei player e diamo valore a ogni scelta.
+Qui ogni interazione può diventare una trama che cresce nel tempo.</p>
       <div class="grid features">
         <div class="card">
           <h3>Performance</h3>
-          <p>Server stabile e ottimizzato per scene fluide e senza lag, anche nelle azioni più complesse.</p>
+          <p>Server stabile e ottimizzato per garantire fluidità anche nelle azioni più complesse.
+Meno lag, più immersione, più spazio per fare vero RP di qualità.</p>
         </div>
         <div class="card">
           <h3>Regolamento chiaro</h3>
-          <p>Linee guida semplici e trasparenti per evitare confusioni e favorire il buon RP.</p>
+          <p>Linee guida semplici, trasparenti e pensate per evitare abusi.
+Regole che non limitano il gioco, ma lo proteggono: così ogni scena resta coerente e vivibile.</p>
+        </div>
+        <div class="card">
+          <h3>Evoluzione continua</h3>
+          <p>Aggiornamenti costanti, nuove idee, eventi e miglioramenti tecnici.
+Elite RP cresce insieme ai suoi giocatori, ascoltando feedback e premiando il buon ruolo.</p>
         </div>
         <div class="card">
           <h3>Community</h3>
-          <p>Staff presente, player collaborativi, zero tossicità: qui si gioca per creare buone storie.</p>
+          <p>Staff presente, player collaborativi, zero tossicità: qui si gioca per creare buone storie. Un ambiente dove è facile inserirsi, costruire rapporti e creare storie memorabili con chi ha voglia di giocare davvero.</p>
+        </div>
+        <div class="card">
+          <h3>Criminalità</h3>
+          <p>Un ecosistema narrativo strutturato: gang, traffici, rapine, affari sporchi e alleanze instabili.
+Ogni azione ha conseguenze, ogni scelta può cambiare i rapporti di forza della città.
+Criminalità sì, ma credibile, ragionata e costruita nel tempo.</p>
+        </div>
+        <div class="card">
+          <h3>Legalità</h3>
+          <p>Lato pulito della città: lavori, imprese, forze dell’ordine, sanità, attività pubbliche e private.
+Qui il RolePlay si fonda su professionalità, cooperazione e storie che danno vita a una metropoli viva, organizzata e realistica.
+Dalle botteghe ai grandi dipartimenti: anche la legalità crea trame incredibili.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery -->
-<section id="gallery">
-  <div class="container">
-    <h3 class="section-title">Galleria</h3>
-    <p class="section-sub">Screenshot e momenti dalla città.</p>
+<!-- Galleria -->
+<section id="galleria" class="container" style="padding-top:40px;">
+    <h2>Galleria</h2>
+    <p>Scorri ed esplora il mondo di Elite</p>
 
-    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:12px">
-      <div class="card"><img src="https://i.postimg.cc/RFhggH9G/Screenshot-2025-11-08-183012.png" alt="Elite background" style="border-radius:12px"></div>
-      <div class="card"><img src="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" alt="Elite logo" style="border-radius:12px"></div>
+    <div class="gallery-wrapper">
+        <button class="gallery-arrow left">❮</button>
 
-      <!-- Sostituisci questi placeholder con i tuoi screenshot -->
-      <div class="card"><img src="https://i.postimg.cc/QC99YXHT/Screenshot-2025-11-08-184959.png" alt="Screenshot 1" style="border-radius:12px"></div>
-      <div class="card"><img src="https://i.postimg.cc/ZnFv3wg1/Screenshot-2025-11-08-182310.png" alt="Screenshot 2" style="border-radius:12px"></div>
-      <div class="card"><img src="https://i.postimg.cc/W1JjHdN9/Screenshot-2025-11-08-182652.png" alt="Screenshot 3" style="border-radius:12px"></div>
-      <div class="card"><img src="https://i.postimg.cc/3JXFCBps/Screenshot-2025-11-08-174230.png" alt="Screenshot 4" style="border-radius:12px"></div>
+        <div class="gallery-row">
+            <img src="https://i.postimg.cc/RFhggH9G/Screenshot-2025-11-08-183012.png" class="gallery-img" alt="">
+            <img src="https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg" class="gallery-img" alt="">
+            <img src="https://i.postimg.cc/QC99YXHT/Screenshot-2025-11-08-184959.png" class="gallery-img" alt="">
+            <img src="https://i.postimg.cc/ZnFv3wg1/Screenshot-2025-11-08-182310.png" class="gallery-img" alt="">
+            <img src="https://i.postimg.cc/W1JjHdN9/Screenshot-2025-11-08-182652.png" class="gallery-img" alt="">
+            <img src="https://i.postimg.cc/3JXFCBps/Screenshot-2025-11-08-174230.png" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+            <img src="img/gallery/6.jpg" class="gallery-img" alt="">
+        </div>
+
+        <button class="gallery-arrow right">❯</button>
     </div>
-  </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+    <span class="close-btn">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
 
   <!-- Staff -->
   <section id="staff">
@@ -217,7 +347,7 @@
   <section id="rules">
     <div class="container">
       <h3 class="section-title">Regole principali</h3>
-      <p class="section-sub">Qui un estratto; il documento completo è disponibile in download.</p>
+      <p class="section-sub">Qui un estratto; il documento completo lo troverai nella sezione dedicata.</p>
       <div class="card">
         <ol class="rules">
           <li>No Metagame, No Powergame.</li>
@@ -248,7 +378,7 @@
           <ol style="color:var(--muted)">
             <li>Scarica e installa <strong>FiveM</strong>.</li>
             <li>Apri FiveM e premi <strong>F8</strong>.</li>
-            <li>Digita: <code>connect ip:30120</code> (sostituisci con quello reale).</li>
+            <li>Digita: <code>connect ip:30120</code>.</li>
             <li>Unisciti al <a href="https://discord.gg/wjJrbqTuTu" target="_blank" rel="noopener" style="color:var(--accent)"><strong>Discord</strong></a> per whitelist & news.</li>
           </ol>
         </div>
@@ -257,7 +387,6 @@
           <ul style="list-style: none; padding-left:0; margin:0; color:var(--muted)">
             <li>📥 <a id="download-regolamento" href="regolamento.html" target="_blank" rel="noopener">Regolamento</a></li>
             <li>📝 <a href="https://discordapp.com/channels/1432375696373711038/1432375698852679753" target="_blank" rel="noopener">Modulo Whitelist</a></li>
-</a></li>
             <li>🎵 <a href="#" onclick="alert('Inserisci qui il link del profilo TikTok ufficiale.'); return false;">TikTok ufficiale</a></li>
           </ul>
         </div>
@@ -285,17 +414,60 @@
       <small>© <span id="year"></span> Elite RP • FiveM server. Non affiliato a Rockstar Games o Take-Two.</small>
     </div>
   </footer>
+<script>
+/* ----- COPY IP (rimane invariato) ----- */
+function copyIP() {
+    const ip = document.getElementById('ip').textContent.trim();
+    navigator.clipboard.writeText(ip);
+    const el = document.querySelector('.copy');
+    el.textContent = 'copiato!';
+    setTimeout(() => el.textContent = 'copia', 1500);
+}
 
-  <script>
-    function copyIP(){
-      const ip = document.getElementById('ip').textContent.trim();
-      navigator.clipboard.writeText(ip).then(()=>{
-        const el = document.querySelector('.copy');
-        el.textContent = 'copiato!';
-        setTimeout(()=> el.textContent = 'copia', 1500);
-      });
-    }
-    document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ----- GALLERIA ----- */
+const row = document.querySelector('.gallery-row');
+const imgs = document.querySelectorAll('.gallery-img');
+const lightbox = document.querySelector('#lightbox');
+const lightboxImg = document.querySelector('#lightbox-img');
+const closeBtn = document.querySelector('.close-btn');
+
+if (row && imgs.length > 0) {
+
+    /* FRECCE */
+    document.querySelector('.gallery-arrow.left').onclick = () => {
+        row.scrollBy({ left: -300, behavior: 'smooth' });
+    };
+
+    document.querySelector('.gallery-arrow.right').onclick = () => {
+        row.scrollBy({ left: 300, behavior: 'smooth' });
+    };
+
+    /* CLICK IMAGE → LIGHTBOX */
+    imgs.forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.style.display = 'flex';
+        });
+    });
+
+    /* CHIUSURA LIGHTBOX */
+    closeBtn.onclick = () => {
+        lightbox.style.display = 'none';
+    };
+
+    lightbox.onclick = (e) => {
+        if (e.target === lightbox) lightbox.style.display = 'none';
+    };
+}
+/* SCORRIMENTO CON ROTELLINA */
+row.addEventListener('wheel', (e) => {
+    // Scroll solo se il mouse è sopra la galleria
+    e.preventDefault();
+    row.scrollLeft += e.deltaY * 5.2; // velocità scorrimento
+}, { passive: false });
+
   </script>
 </body>
 </html>
