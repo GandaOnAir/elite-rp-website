@@ -59,16 +59,16 @@
       gap:10px;
     }
 
-.logo{
-  width:38px;
-  height:38px;
-  border-radius:8px;
-  background-image:url('https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  box-shadow:0 0 18px rgba(56,243,120,.45);
-}
+    .logo{
+      width:38px;
+      height:38px;
+      border-radius:8px;
+      background-image:url('https://i.postimg.cc/Tw0t9JBS/IMG-20251027-WA0022.jpg');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      box-shadow:0 0 18px rgba(56,243,120,.45);
+    }
     .brand b{font:800 18px Montserrat;}
 
     .btn{
@@ -140,6 +140,12 @@
       box-shadow:0 0 16px rgba(56,243,120,.6);
     }
 
+    /* quadrante che contiene la parola cercata */
+    .rule-card.match{
+      box-shadow:0 0 14px rgba(56,243,120,.9);
+      border-color:var(--accent);
+    }
+
     .rules-header{margin-bottom:10px;}
     .rules-header .search-row{
       display:flex;
@@ -170,8 +176,8 @@
     }
 
     .tray {
-  overscroll-behavior: contain;
-}
+      overscroll-behavior: contain;
+    }
 
     .tray::-webkit-scrollbar-thumb{
       background:rgba(255,255,255,0.25);
@@ -192,22 +198,22 @@
       margin-top:12px;
     }
 
-   .tray{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  scroll-snap-type:x proximity;
-  scroll-padding: 10px;
-  padding:6px;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:12px;
-  background:rgba(56,243,120,.03);
-}
+    .tray{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      scroll-snap-type:x proximity;
+      scroll-padding: 10px;
+      padding:6px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:12px;
+      background:rgba(56,243,120,.03);
+    }
 
     /* FRECCE NUOVE STILE DISCORD */
     .scroll-btn{
       position:relative;
-      top: 40px; /* regola questo numero se vuoi abbassarle o alzarle di più */
+      top: 40px;
       width:40px;
       height:40px;
       border-radius:12px;
@@ -236,6 +242,14 @@
       background:rgba(56,243,120,0.1);
       color:var(--accent);
       font-weight:700;
+    }
+
+    /* evidenziazione parola cercata */
+    mark.hl{
+      background:rgba(56,243,120,0.4);
+      color:#ffffff;
+      padding:0 2px;
+      border-radius:3px;
     }
 
     @media(max-width:800px){
@@ -276,10 +290,13 @@
 
         <div class="rules-header">
           <div class="search-row">
-            <input id="ruleSearch" type="search" placeholder="Cerca nel regolamento… (titoli sezioni)">
+            <input id="ruleSearch" type="search" placeholder="Cerca una parola nel regolamento…">
             <button id="clearSearch" class="btn">Pulisci</button>
           </div>
-          <p class="section-sub">Clicca su una sezione per aprire il relativo estratto del regolamento.</p>
+          <p class="section-sub">
+            Digita una parola (es. "rapina", "medico", "permadeath") per trovare il quadrante corrispondente.  
+            I quadranti dove è presente verranno evidenziati e la parola sarà illuminata in verde.
+          </p>
         </div>
 
         <!-- BAR NAV -->
@@ -289,12 +306,13 @@
           <div class="tray" id="ruleTray">
             <a class="rule-card" data-target="regolamento"><h4>REGOLAMENTO</h4></a>
             <a class="rule-card" data-target="generale"><h4>REGOLAMENTO GENERALE</h4></a>
+            <a class="rule-card" data-target="criminalita"><h4>REGOLAMENTO CRIMINALITÀ</h4></a>
+            <a class="rule-card" data-target="rapine"><h4>REGOLAMENTO RAPINE</h4></a>
             <a class="rule-card" data-target="permadeath"><h4>REGOLAMENTO PERMADEATH</h4></a>
             <a class="rule-card" data-target="gang"><h4>REGOLAMENTO GANG</h4></a>
             <a class="rule-card" data-target="polizia"><h4>REGOLAMENTO POLIZIA</h4></a>
             <a class="rule-card" data-target="medici"><h4>REGOLAMENTO MEDICI</h4></a>
             <a class="rule-card" data-target="lavorinw"><h4>REGOLAMENTO LAVORI NO WHITELISTATI</h4></a>
-            <a class="rule-card" data-target="criminalita"><h4>REGOLAMENTO CRIMINALITÀ</h4></a>
           </div>
 
           <button class="scroll-btn right">›</button>
@@ -307,85 +325,445 @@
           <section id="regolamento" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO</h3>
 
-            <h4>Severamente Vietato</h4>
+            <h4>1. INTRODUZIONE</h4>
             <p>
-              • Metagame, powergame, uso improprio di informazioni OOC.<br>
-              • RDM/VDM, fail-RP, comportamenti irrealistici.<br>
-              • Insulti, minacce, molestie.<br>
-              • Cheat, exploit, bug abuse.<br>
-              • Troll e comportamenti antisociali.
+              Il Server ELITE RP è un Server Role Play che tende a simulare situazioni della vita reale, questo regolamento norma il comportamento generale e specifico dei diversi giocatori al fine di garantire un gameplay coerente e immersivo.
             </p>
 
-            <h4>Definizioni</h4>
+            <h4>2. DEFINIZIONI E REGOLE BASE</h4>
             <p>
-              • <b>IC</b>: gioco del personaggio.<br>
-              • <b>OOC</b>: comunicazioni esterne.<br>
-              • <b>DM</b>: violenza senza motivo.<br>
-              • <b>PK</b>: perdita memoria parziale.<br>
-              • <b>Perma</b>: morte definitiva del PG.
+              • E’ severamente vietato il FAIL RP. Vengono identificate con questo termine tutte le azioni irrealistiche o forzate, che nella vita reale non sarebbero possibili.<br>
+              • E’ severamente vietato fare POWERGAME ovvero compiere azioni che abusano delle meccaniche di gioco per trarre vantaggio in game, azioni insensate e/o non verosimili, (es. scappare con un auto sportiva su una montagna).<br>
+              • Non è consentito fare Powerplay, quel comportamento in cui un giocatore limita o impedisce agli altri di prendere decisioni o di influenzare l’azione.<br>
+              • E’ severamente vietato fare VDM e RDM:<br>
+              - VDM = investire player con auto senza motivo<br>
+              - RDM = uccidere player senza valida motivazione.<br>
+              • E’ severamente vietato fare METAGAME OOC/IC ovvero utilizzare informazioni (OOC) ottenute esternamente al gioco e riportarle in RP (IC).<br>
+              • E’ severamente vietato fare NO FEAR, ovvero il Non simulare la paura in caso di situazione di pericolo in game. Non ruolare il Fear potrà portare alla morte del personaggio (Permadeath), presentando le dovute clip in assistenza. All’interno del server è presente il Life Value.<br>
+              • E’ severamente vietato fare STREAM SNIPING, ovvero guardare Live mentre si è in gioco.<br>
+              • E’ severamente vietato USCIRE DALL’ RP. Ogni azione, corretta o non corretta, deve essere portata a termine nel miglior modo. Una volta finita, sarà possibile segnalare allo staff l’ azione e in assistenza verrà valutata.<br>
+              • E’ severamente vietato L'utilizzo di qualsiasi Cheat, l’ utilizzo di questi verrà punito con BAN PERMANENTE IMMEDIATO. Di conseguenza qualunque NO PROPS, RAPID FIRE, DAMAGE BOOST, FILTER KEYS etc. Inoltre qualsiasi mod grafica che altera il rendering dei cespugli/alberi e qualsivoglia oggetto sono considerati NO PROPS e di conseguenza PUNITI.<br>
+              • E’ severamente vietato STARE AFK (Away From Keyboard) per tempi eccessivamente lunghi. In caso in cui si presenti la necessità di allontanarsi dal computer, è consigliato mettere il pg in una posizione lontana dagli altri player. Andare AFK durante un azione sarà oggetto di richiamo in assistenza.<br>
+              • È severamente vietato ABUSARE DI BUG O GLITCH. In caso ne veniate a conoscenza, è obbligatorio segnalarlo allo staff, che provvederà a risolverli al più presto.<br>
+              • E’ severamente vietato INSCENARE VIOLENZA SESSUALE. La pena in caso di violazione di questa regola sarà il BAN PERMANENTE IMMEDIATO.<br>
+              • Eventuali insulti gravi a player feriti a terra verranno sempre interpretati come tossicismo e sono severamente vietati. Il provvedimento in tali casi sarà deciso dallo staff a seconda della gravità.<br>
+              • E’ severamente vietato fare COMBAT LOGIN, quando inizia un'azione possono partecipare alla stessa solo player già presenti nel server. I player che sono entrati nel server durante o dopo l’inizio di una determinata azione, non potranno in nessun modo entrare a far parte di essa.<br>
+              • E’ severamente vietato l’ uso di N WORD, F WORD o tutte quelle parole che possono andare a ledere la sensibilità altrui. Durante il roleplay le persone devono tenere un comportamento consono alla community evitando insulti razziali, a sfondo religioso e sessisti verso uomini e donne. Il Cat Calling e insulti o l’uso inappropriato degli /me e animazioni verso il sesso opposto porterà al BAN PERMANENTE a discrezione dello staff.<br>
+              • E’ severamente vietato l ’uso inappropriato degli /ME.<br>
+              • E’ severamente vietato il REVENGE KILL. Esempio di Revenge Kill: Io, ucciso da Genny, mi risveglio in ospedale e vado da lui a vendicarmi senza scoprirlo in RP.<br>
+              • E’ severamente vietato fare MIX CHAT. Il Mixchat (MC) è confondere la chat IC con la chat OOC.<br>
+              - IC (In Character) è la vita che riguarda il personaggio all'interno del gioco. La sua chat è la voce del personaggio stesso.<br>
+              - OOC (Out of Character) è la chat che non riguarda la simulazione, ma la vita reale.<br>
+              • E’ severamente vietato fare CARSURF. Definizione: stare su un veicolo in movimento senza essere “seduti” sugli appositi sedili.<br>
+              • E’ severamente vietato fare CARJACK. Definizione: Il Carjack è rubare un veicolo senza una determinata motivazione rp.<br>
+              • E’ severamente vietato fare CARKILL. Definizione: Il CarKill significa stare sopra ad un player con un veicolo e bloccarlo.<br>
+              • E’ severamente vietato fare BUNNYHOP. Definizione: Saltare continuamente per andare più veloce.<br>
+              • E’ severamente vietato il TROLL PLAY all’interno del Server, cioè avere un comportamento irritante, fuori luogo o fuori tema che vada ad intaccare il normale Rp degli altri Player (compreso uso di Soundboard). Il Troll play sarà punito con un ban di 24 ore a salire a seconda della gravità.
             </p>
           </section>
 
-          <!-- GENERALE -->
+          <!-- REGOLAMENTO GENERALE -->
           <section id="generale" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO GENERALE</h3>
-            <p>• Mantieni un comportamento coerente RP.<br>• Rispetta giocatori e staff.<br>• Usa armi e veicoli in modo realistico.</p>
 
-            <h4>Safe Zone</h4>
-            <p>• Ospedale e negozi protetti.<br>• Vietate azioni ostili salvo permesso staff.</p>
+            <h4>2.1 REGISTRAZIONI VIDEO, GOPRO E BODYCAM</h4>
+            <p>
+              Una persona per poter effettuare una registrazione video dovrà avere il telefono in mano oppure essere in possesso di un apposito item chiamato "GOPRO" che deve obbligatoriamente essere situato nella hotbar (barra di scelta rapida) e avere la scritta "REC" sopra (premi l'item per attivarla). Ricordiamo che si dovrà mostrare, all'inizio della clip, che tutto sia svolto correttamente.<br>
+              Solo chi ha dotato il proprio personaggio di una videocamera può utilizzare eventuali registrazioni come prove in roleplay.<br>
+              Per poter utilizzare un video come prova in un processo o durante un’indagine, è necessario che la bodycam risulti visibilmente indossata e attivata durante l’intera scena.
+            </p>
 
-            <h4>Assistenze e Chat</h4>
-            <p>• Ticket solo con prove.<br>• Comandi /me /do usati correttamente.</p>
+            <h4>2.2 STREAMER E LIVE</h4>
+            <p>
+              All’interno del server possono essere presenti degli streamer pertanto si chiede di mantenere un comportamento consono. Insulti, allusioni, espressioni o gesti discriminatori a sfondo razziale o religioso sono severamente vietati. Player che violeranno questa regola potranno essere warnati o direttamente bannati a discrezione dello staff a seconda della gravità della situazione. Come riferimento di seguito riportiamo il link alle community guidelines di twitch: https://www.twitch.tv/p/it-it/legal/community-guidelines/<br>
+              Lo Staff potrà intervenire con provvedimenti che riterrà opportuni qualora all'interno di una live uno streamer generi flame contro lo Staff o contro il server.
+            </p>
 
-            <h4>Ferimento / Coma</h4>
-            <p>• Ruola dolore e recupero.<br>• Dopo il coma parte dell’azione viene dimenticata.</p>
+            <h4>3. PERSONAGGI E IDENTITÀ DI GIOCO</h4>
+            <p>
+              • I giocatori che ricoprono ruoli istituzionali (Polizia, Tribunale, Servizi Medici) sono tenuti a mantenere un comportamento irreprensibile, agendo sempre con responsabilità, serietà e rispetto del loro ruolo.<br>
+              • Ogni personaggio che crei deve avere una sua identità autonoma. Non è permesso condividere tra i tuoi personaggi conoscenze o informazioni che non sarebbero realisticamente note, come nascondigli, rapporti personali o rivalità. Ogni storia deve vivere nel suo mondo.<br>
+              • Non è ammesso creare più personaggi appartenenti alla stessa organizzazione, gruppo criminale o fazione. Ogni personaggio deve avere legami, comportamenti e scelte distinti per garantire coerenza narrativa e varietà nel gioco.<br>
+              • I nomi dei personaggi devono essere coerenti con il contesto della città e con l’ambientazione. Nomi ironici, ridicoli o presi da personaggi famosi o della cultura pop verranno modificati senza preavviso.<br>
+              • In caso di inattività prolungata e dopo un avviso da parte dello staff, ci riserviamo la possibilità di liberare proprietà come case o veicoli per garantire la rotazione attiva delle risorse in città.<br>
+              • Non è consentito redigere testamenti o lasciare beni in eredità ad altri personaggi.<br>
+              • È vietato creare un nuovo personaggio con lo stesso aspetto fisico o stile di quello precedente, per evitare confusione e favorire il rinnovamento delle storie.<br>
+              • Simulare un suicidio è ammesso solo se precedentemente approvato dallo staff tramite richiesta permadeath. Ogni scena di questo tipo deve essere trattata con estrema cura e rispetto.
+            </p>
+
+            <h4>4. VALORE DELLA VITA (VALUE OF LIFE)</h4>
+            <p>
+              Ogni personaggio deve agire come se avesse una sola vita. Le sue decisioni devono mostrare un reale istinto di sopravvivenza, evitando comportamenti impulsivi, irrazionali o che mettano a rischio la propria vita senza una ragione valida.<br><br>
+              Agire sotto minaccia: Se il personaggio si trova in una situazione di pericolo evidente — ad esempio qualcuno gli punta un’arma contro o è chiaramente in svantaggio — è coerente che collabori con chi lo sta minacciando. Tentare di ribellarsi senza alcuna possibilità concreta di riuscita rovina l’immersione e contraddice il principio del roleplay realistico.<br><br>
+              Sopraffazione numerica: Quando ci si ritrova in netta inferiorità (come 1 contro 3 o più), l’opzione più sensata è collaborare o cercare una fuga solo se davvero plausibile. Non è vietato tentare di scappare, ma deve avere senso nella scena: niente gesti forzati o eroismi ingiustificati.<br><br>
+              Rispetta la vita del tuo personaggio con realismo. Se una cosa non la faresti nella vita reale, probabilmente non ha senso farla nemmeno nel gioco.
+            </p>
+
+            <h4>5. GESTIONE DEL RESPAWN E RIANIMAZIONE</h4>
+            <p>
+              Il respawn è ammesso solo una volta conclusa l’azione.<br>
+              Se sei stato abbattuto, devi attendere di essere lootato prima di poter respawnare.<br>
+              Dopo il respawn in ospedale o dopo una rianimazione, è obbligatorio simulare uno stato confusionale per almeno 15 minuti.<br>
+              Solo un trauma cranico può giustificare un’amnesia del personaggio.<br>
+              In caso di intervento del personale EMS, è obbligatorio interagire con loro dopo la rianimazione e indicare correttamente tramite lo /status le ferite riportate durante l'evento.
+            </p>
+
+            <h4>6. REGOLAMENTO ASSISTENZE</h4>
+            <p>
+              In Assistenza bisogna tenere un comportamento consono. Ci sono determinati ruoli come “Responsabile Criminalità / Polizia, Gestore Gang, Responsabile Staff, Responsabile Donazioni etc, ai quali bisogna rivolgersi per determinate domande o richieste.<br><br>
+              • Le assistenze possono essere di tipo/motivo: GENERALE, TECNICA, AZIONE.<br>
+              • Nella compilazione del MODULO ASSISTENZA specificare il tipo/motivo e descrivere il problema.<br>
+              • E’ obbligatorio compilare il modulo in tutte le sue parti al fine di essere seguiti dalle figure Staff piu’ indicate.<br>
+              • ASSISTENZA AZIONI: è obbligatorio fornire una prova video. Nel momento in cui si viene in assistenza la clip dovrà essere in possesso del player che si presenta in assistenza o già caricata su una piattaforma di streaming (MEGA, Youtube, Streamable etc..) ed essere a disposizione dello Staff per essere visionata.<br>
+              • In assenza di una prova video non potrà essere richiesta un’assistenza per una azione.<br>
+              • Non verranno effettuati rimborsi senza prove video.<br>
+              • In nessun caso verrà effettuato il rimborso dei giubbotti antiproiettile.<br>
+              • Non sarà possibile chiedere la rivalutazione di un’azione, a meno che l’azione non abbia portato ad un permadeath o a un ban.<br>
+              • Contattare in privato un membro dello staff per richiedere un assistenza verrà severamente punito. Il contatto privato di uno staff per il riesame di un'assistenza sarà valido solo qualora il giocatore sanzionato non può contattare uno staffer direttamente dal server discord e nessuno può farlo per lui.
+            </p>
           </section>
 
-          <!-- PERMADEATH -->
-          <section id="permadeath" class="panel rule-detail" style="display:none;">
-            <h3>REGOLAMENTO PERMADEATH</h3>
-            <p>• Evento definitivo, richiede ticket staff.<br>• Nuovo PG senza collegamenti col vecchio.</p>
-          </section>
-
-          <!-- GANG -->
-          <section id="gang" class="panel rule-detail" style="display:none;">
-            <h3>REGOLAMENTO GANG</h3>
-            <p>• Identità chiara e attività criminali coerenti.<br>• Conflitti solo con base RP.<br>• Quartieri regolati via ticket.</p>
-          </section>
-
-          <!-- POLIZIA -->
-          <section id="polizia" class="panel rule-detail" style="display:none;">
-            <h3>REGOLAMENTO POLIZIA</h3>
-            <p>• Uso proporzionato della forza.<br>• Arresti e indagini con base RP.<br>• FBI come supporto investigativo.</p>
-          </section>
-
-          <!-- MEDICI -->
-          <section id="medici" class="panel rule-detail" style="display:none;">
-            <h3>REGOLAMENTO MEDICI</h3>
-            <p>• Fazione neutrale.<br>• Interventi sanitari sempre ruolati.<br>• Non ostaggi salvo approvazione staff.</p>
-          </section>
-
-          <!-- LAVORI NO WL -->
-          <section id="lavorinw" class="panel rule-detail" style="display:none;">
-            <h3>REGOLAMENTO LAVORI NO WHITELISTATI</h3>
-            <p>• Rispetta percorsi farming.<br>• Non ostacolare lavoratori.<br>• Vietato AFK farming.</p>
-          </section>
-
-          <!-- CRIMINALITÀ -->
+          <!-- REGOLAMENTO CRIMINALITÀ -->
           <section id="criminalita" class="panel rule-detail" style="display:none;">
             <h3>REGOLAMENTO CRIMINALITÀ</h3>
 
-            <h4>Droghe</h4>
-            <p>• Raccolta e produzione ruolate.</p>
+            <h4>9. REGOLAMENTO FAZIONI ILLEGALI</h4>
+            <p>
+              • Scrivere la storia della fazione e pubblicarla sul canale discord “proposte fazione”. La proposta dovrà essere completa di:<br>
+              1. storia delle fazione<br>
+              2. linee guida RP<br>
+              3. regolamento interno (esempio: stile mafia, rapinatori, gang, etc)<br>
+              4. scopo in RP (esempio: controllo delle droghe, controllo delle armi, estorsione, rapimenti etc)<br><br>
+              • La fazione dovrà essere composta da minimo 6 player.<br>
+              • Le fazioni approvate dallo staff riceveranno:<br>
+              • Fazione come lavoro con massimo 5 ruoli<br>
+              • Deposito oggetti e armi (in qualsiasi punto della mappa)<br>
+              • Canale nel discord Mafia sia testuale che vocale con accesso riservato (invisibile agli altri player)<br><br>
+              • La fazione dovrà essere attiva e dovrà rispettare il suo regolamento interno a meno che la storia non cambi e maturi in rp, ma se la fazione non è attiva lo staff potrà rimuoverla.<br>
+              • Nel caso una fazione volesse un locale dovrà scriverlo all’interno della proposta fazione effettuata.<br>
+              • Se una fazione approvata, con un background da mafia o organizzazione criminale tenta di conquistare territori poveri come Grove Street o territori simili, gli verrà tolta la fazione scriptata (perdendo anche il posto nella tavola del cartello), in quanto non più consone al suo stesso background.<br>
+              • Qualora, uno o più player creano scontri o recano danni ad una fazione riconosciuta, la stessa, dopo il primo avvertimento, può portare il soggetto o i soggetti dal cartello (admin) per richiedere un perma. Gli admin dopo una valutazione veloce potranno consentire immediatamente il perma stesso.<br>
+              • Tutte le fazioni illegali ufficiali saranno divise e identificate in questo modo:<br>
+              - Mafia<br>
+              - Gang<br>
+              - Crew<br>
+              Tutti gli altri gruppi criminali presenti in città saranno identificati come dei semplici gruppi criminali. Sarà a discrezione dello STAFF valutare che il roleplay delle fazioni illegali sia coerente con l’identità del background fazione.<br>
+              • Il cartello assegnerà ad alcune mafie dei territori che dovranno presidiare e difendere.
+            </p>
 
-            <h4>Rapine</h4>
-            <p>• Richiedono trattativa chiara con polizia.</p>
+            <h4>9.1 BLINDATI ED ERGASTOLANI</h4>
+            <p>
+              È permesso assaltare blindati per liberare detenuti all’ergastolo, con un massimo di 8 criminali coinvolti.<br>
+              È vietato effettuare più di un tentativo per lo stesso prigioniero.
+            </p>
 
-            <h4>Azioni illegali</h4>
-            <p>• Servono motivazioni RP forti.</p>
+            <h4>7. ATTIVITÀ ESTORSIONABILI E PIZZO</h4>
+            <p>
+              Sono soggette a estorsione tutte le attività gestite da player e dotate di whitelist (negozi, locali, aziende, ecc.).<br><br>
+              Se un’attività paga il pizzo a una determinata fazione criminale, si considera attivo un patto di protezione: la fazione che riceve il denaro ha il dovere di difendere l’attività, anche da eventuali attacchi di gruppi rivali.
+            </p>
 
-            <h4>Furti</h4>
-            <p>• Contestualizzati e non seriali.<br>• Limiti armi e numero partecipanti.</p>
+            <h4>7.1 Azioni Vietate</h4>
+            <p>
+              • Non è permesso richiedere il pizzo facendo il nome di più fazioni contemporaneamente.<br>
+              • È proibito estorcere in modo ripetitivo senza alcun tipo di evoluzione narrativa: non si possono fare sempre le stesse richieste ogni settimana senza costruire una trama o un cambiamento di potere.<br>
+              • Non si possono usare minacce per costringere un’attività a cedere beni o proprietà (veicoli, locali, aziende).
+            </p>
+
+            <h4>7.2 Escalation e Conseguenze</h4>
+            <p>
+              Se un’attività rifiuta di pagare il pizzo per più di tre volte di fila, la fazione può avviare un’escalation narrativa (attacchi, sabotaggi, rapimenti).<br>
+              Nei casi più gravi e giustificati, si può arrivare a proporre anche il Permadeath del proprietario o del direttore dell’attività, previa approvazione dello staff.
+            </p>
+
+            <h4>7.3 Abusi e Sanzioni</h4>
+            <p>
+              Ogni abuso o utilizzo del sistema di pizzo per fare grief o farming sarà punito con sanzioni OOC e potrà portare alla sospensione della fazione.
+            </p>
+
+            <h4>8. ACQUISIZIONE DI BUSINESS RIVALI</h4>
+            <p>
+              Non è permesso girare per la mappa in modo casuale alla ricerca di laboratori o tavoli da lavoro con l’intento di trovarne uno attivo.<br>
+              È vietato accamparsi in prossimità di un laboratorio o attività in attesa che una fazione lo utilizzi.<br>
+              Prima di qualsiasi azione, è obbligatorio ottenere informazioni in roleplay tramite pedinamenti, sorveglianza, intercettazioni o altre dinamiche coerenti con il gioco.<br>
+              Deve essere chiaro, tramite prove ottenute in gioco, che il business è effettivamente utilizzato o controllato da una fazione rivale.<br><br>
+              Una volta confermato il possesso, è possibile agire attraverso:<br>
+              • Attacco mirato e organizzato.<br>
+              • Trattativa economica o accordo fra le parti.
+            </p>
+
+            <h4>13. REGOLAMENTO LOOT (LOT)</h4>
+            <p>
+              Le azioni finalizzate esclusivamente al furto di oggetti o denaro senza un reale sviluppo narrativo o una conseguenza logica non sono ammesse. In altre parole: rapinare un personaggio non può mai essere il fine della scena, ma deve essere parte di una narrazione più ampia, o dare il via a un’escalation coerente.
+            </p>
+
+            <h4>13.1 Rapine e Furti in Strada</h4>
+            <p>
+              Sono consentiti, ma il bottino massimo non deve superare il 50% degli averi della vittima.<br>
+              Esempio: se il personaggio ha 100$ e una pistola, è possibile prendere solo i soldi.<br><br>
+              Mantenere sempre coerenza e fair play: il furto deve avere senso nel contesto della scena.<br>
+              Non potete sapere chi avete davanti: potrebbe essere un agente sotto copertura o un membro di una fazione pericolosa.<br>
+              Usate sempre buon senso e cautela: questa meccanica, se abusata, porterà a sanzioni.
+            </p>
+
+            <h4>13.2 Looting Non Consentito (Lato Criminale)</h4>
+            <p>
+              Telefoni e documenti personali (carta d’identità, patente, porto d’armi) possono essere presi solo per visionarne il contenuto, ma devono essere restituiti obbligatoriamente, a meno che la scena non si concluda con permadeath del personaggio coinvolto.<br>
+              Evita di svuotare completamente l’inventario della controparte. Non superare indicativamente il 50% dei beni, per rispetto del gioco altrui e per mantenere equilibrio e coerenza nella narrazione.<br>
+              È vietato depredare personale FDO in servizio, fatta eccezione per: disattivazione o rimozione di dispositivi elettronici, recupero di medikit o munizioni.<br>
+              È vietato effettuare sequestri o estorsioni con lo scopo unico di ottenere loot.<br>
+              È proibito rapinare lavoratori no-whitelist (es. impiegati nei job legali) mentre stanno svolgendo la propria mansione specialmente se indossano la divisa.
+            </p>
+
+            <h4>14. REGOLAMENTO FURTO DI VEICOLI</h4>
+            <p>
+              Il furto d’auto può essere fatto massimo da 2 player (che dovranno essere entrambi sull’auto rubata) che effettuano il furto, non possono intervenire terzi da parte dei criminali, possono portare e usare solo pistole.<br>
+              Per la Polizia potrà intervenire una sola pattuglia composta da 2 agenti, anche loro potranno usare (qualora ci fosse uno scontro a fuoco) solo combat pistol.<br>
+              La zona delle consegne dei furti di veicoli NON sono zone rosse. Quindi per cui non si possono iniziare azioni illegali senza un valido motivo in RP.<br>
+              Ogni tipo di azione illegale a scopo loot per chi ha finito un furto di veicolo verrà valutata FAIL e saranno presi seri provvedimenti da un admin.
+            </p>
+
+            <h4>15. REGOLAMENTO FURTO NELLE ABITAZIONI</h4>
+            <p>
+              Il furto nelle abitazioni può essere fatto massimo da 2 player che effettuano il furto, non possono intervenire terzi da parte dei criminali, possono portare e usare coltelli o pistole cal.9.<br>
+              Per la Polizia potrà intervenire una sola pattuglia composta da 2 agenti, anche loro potranno usare (qualora ci fosse uno scontro a fuoco) solo combat pistol.<br>
+              Durante il furto NON sarà possibile l’utilizzo di ogni tipo di casco.
+            </p>
+
+            <h4>16. RAPIMENTI E INTERROGATORI</h4>
+            <p>
+              La durata massima di un rapimento o di un interrogatorio sotto costrizione (inclusi scenari di tortura) non può superare i 45 minuti, a meno che non ci sia un accordo tra le parti in gioco tramite interazione IC.<br>
+              Lo scopo di questa regola è garantire un'esperienza sostenibile e coinvolgente per tutti, evitando scene troppo lunghe o forzate.
+            </p>
+
+            <h4>17. REGOLAMENTO CREW</h4>
+
+            <h5>17.1 Identità Visiva</h5>
+            <p>
+              Ogni crew deve possedere un elemento distintivo ben visibile (es. sticker, colore specifico, neon o livrea) da applicare ai propri veicoli, così da garantire riconoscibilità e coerenza visiva durante eventi e competizioni.
+            </p>
+
+            <h5>17.2 Risoluzione Conflitti</h5>
+            <p>
+              La notorietà di una crew deve derivare da gare cittadine, sprint e competizioni motoristiche. L'utilizzo di armi da fuoco per regolare dissidi tra crew è fortemente scoraggiato e contrario allo spirito sportivo del progetto.
+            </p>
+
+            <h5>17.3 Abuso del Ranking</h5>
+            <p>
+              Manipolare o forzare il sistema di punteggio è vietato. Chiunque venga sorpreso a trarne vantaggi in modo scorretto sarà sanzionato con:<br>
+              • Azzeramento del punteggio della crew coinvolta<br>
+              • Azzeramento del ranking anche per le altre crew implicate nell’abuso
+            </p>
+
+            <h5>17.4 Doppia Appartenenza</h5>
+            <p>
+              Un personaggio può appartenere a una sola crew per volta.<br>
+              È vietato correre per un'altra crew o alternarsi tra più team, indipendentemente dalla motivazione.
+            </p>
+          </section>
+
+          <!-- REGOLAMENTO RAPINE -->
+          <section id="rapine" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO RAPINE</h3>
+
+            <h4>12.1 Regole Generali</h4>
+            <p>
+              • Durante una rapina in un negozio, in gioielleria e in banca, i poliziotti e i rapinatori devono svolgere almeno 5 minuti di RP.<br>
+              • Nel momento in cui la rapina è in corso (soprattutto nelle grandi banche) nessun’altra fazione potrà intervenire.<br>
+              • Le rapine, una volta iniziate, non possono essere annullate (Questo non vale qualora i poliziotti dovessero comunicare in OOC che non possono intervenire per mancanza di numero).<br>
+              • Se, al termine del processo, i poliziotti non sono ancora intervenuti, i rapinatori possono scappare con il bottino. Se i poliziotti dovessero arrivare durante l’uscita dei criminali si darà vita ad un inseguimento.<br>
+              • Eventuali criminali che dovessero “scappare” dalla rapina non potranno rientrare in azione.<br>
+              E’ severamente vietato portare qualsiasi tipo di veicolo all’interno degli edifici.
+            </p>
+
+            <h4>12.2 Tipologie di Rapina e Partecipanti</h4>
+            <p>
+              • Rapina in NEGOZIO 24/7:<br>
+              - Rapinatori: massimo 2<br>
+              - Agenti in azione: massimo 2<br>
+              - Ostaggi: massimo 1<br>
+              - Nessun complice all’esterno<br>
+              - Armi: rapinatori coltello, pistole 9mm; polizia combat pistol<br>
+              - Niente caschi per entrambe le parti.<br><br>
+
+              • Rapina al Gabriela's Market:<br>
+              - Rapinatori: massimo 3<br>
+              - Agenti in azione: massimo 3<br>
+              - Ostaggi: massimo 1<br>
+              - Nessun complice all’esterno<br>
+              - Armi: rapinatori 9mm / SNS / Vintage, polizia Combat Pistol.<br><br>
+
+              • Rapina al Negozietto Paleto (civ. 3030):<br>
+              - Rapinatori: massimo 3<br>
+              - Agenti in azione: massimo 3<br>
+              - Ostaggi: massimo 1<br>
+              - Nessun complice all’esterno<br>
+              - Armi: solo pistole cal. 9<br>
+              - Niente caschi.<br><br>
+
+              • Rapina alla Gioielleria:<br>
+              - Rapinatori: massimo 4<br>
+              - Agenti in azione: massimo 5<br>
+              - Ostaggi: minimo 1 massimo 2<br>
+              - Nessun complice all’esterno<br>
+              - Armi: rapinatori 9mm / SNS / Vintage, polizia Combat Pistol<br>
+              - Niente caschi.<br><br>
+
+              • Rapina al museo:<br>
+              - Rapinatori: massimo 4<br>
+              - Agenti in azione: massimo 5<br>
+              - Ostaggi: minimo 1 massimo 2<br>
+              - Nessun complice all’esterno<br>
+              - Armi: rapinatori 9mm / SNS / Vintage, polizia Combat Pistol<br>
+              - Niente caschi.<br><br>
+
+              • Rapina al Ponsonbys (civ. 644):<br>
+              - Rapinatori: massimo 3<br>
+              - Agenti in azione: massimo 3<br>
+              - Ostaggi: minimo 1 massimo 2<br>
+              - Nessun complice all’esterno<br>
+              - Armi: solo pistole cal. 9.<br><br>
+
+              • Rapina a Banca Fleeca (centro città):<br>
+              - Rapinatori: massimo 4<br>
+              - Agenti in azione: massimo 5<br>
+              - Ostaggi: minimo 1 massimo 2<br>
+              - Nessun complice all’esterno<br>
+              - Armi: SMG e pistole.<br><br>
+
+              • Rapina a Blaine Bank (Paleto):<br>
+              - Rapinatori: minimo 4 e massimo 5<br>
+              - Agenti in azione: massimo 6<br>
+              - Ostaggi: minimo 1 massimo 2<br>
+              - Complice esterno: 1 solo (massimo un isolato di distanza, vedi mappa) contato come persona in azione<br>
+              - Armi: SMG, pistole e fucili d’assalto (Carabina Speciale, Carabina d’Assalto)<br>
+              - Caschi consentiti.<br><br>
+
+              • Rapina alle banche Fleeca di Sandy Shores e Fleeca Est:<br>
+              - Rapinatori: massimo 4<br>
+              - Agenti in azione: massimo 5<br>
+              - Ostaggi: massimo 2<br>
+              - Complice esterno: 1 (compreso nei 4 in azione)<br>
+              - Armi: SMG consentite<br>
+              - Caschi consentiti.<br><br>
+
+              • Rapina alla Banca Pacific Standard:<br>
+              - Rapinatori: massimo 6<br>
+              - Agenti in azione: minimo 7 e massimo 8<br>
+              - Ostaggi: fino a 2 ostaggi<br>
+              - Complice esterno: 1 solo (massimo un isolato di distanza, vedi mappa) contato come persona in azione<br>
+              - Il tetto della Pacific non può essere utilizzato da nessuna delle due parti<br>
+              - L’esterno potrà ingaggiare in qualunque momento<br>
+              - È vietato ingaggiare uccidendo il contrattatore<br>
+              - Uscire all’esterno della banca senza previamente avvisare gli agenti sarà considerato NoFear con conseguente ingaggio della Polizia<br>
+              - È vietato usare il glitch dell’apertura porte con il fucile per attaccare gli agenti.<br><br>
+
+              • Rapina alla Zecca di Stato:<br>
+              - Concessa solo previa richiesta ad admin<br>
+              - Rapinatori: massimo 12 criminali<br>
+              - Poliziotti: massimo 14 agenti<br>
+              - Ostaggi: fino a 4 ostaggi<br>
+              - Complice esterno: 1 solo (massimo un isolato di distanza, vedi mappa) contato come persona in azione<br>
+              - Il tetto della Pacific non può essere utilizzato dal criminale all'esterno<br>
+              - Si potranno usare caschi e armi a scelta.
+            </p>
+
+            <h4>12.3 Rapine Fittizie e Interessi OOC</h4>
+            <p>
+              È vietato rapinare attività in cui si è coinvolti direttamente o indirettamente, come titolari, soci, dipendenti o tramite personaggi secondari o prestanome.<br>
+              È inoltre proibito organizzare colpi concordati con il proprietario dell’attività, anche se amici (OOC o IC): le rapine devono sempre risultare genuine e credibili, senza accordi o scenari costruiti artificialmente.
+            </p>
+          </section>
+
+          <!-- REGOLAMENTO PERMADEATH -->
+          <section id="permadeath" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO PERMADEATH</h3>
+
+            <h4>18. REGOLAMENTO Permadeath / Permacut / Invalidita temporanea</h4>
+            <p>
+              ● Per richiedere un Permadeath è necessario presentare almeno 5 motivazioni RP differenti, supportate da prove (screen, video, log, ecc.).<br>
+              ● La richiesta deve essere approvata dallo staff tramite ticket.<br>
+              ● L’approvazione richiede da 0 a 48 ore.<br>
+              ● Una volta approvata, si dispone di 7 giorni di tempo per eseguire l’azione.<br>
+              ● Il richiedente deve essere presente all’azione. Se dovesse essere ucciso durante l’evento, subirà contro-permadeath.<br>
+              ● Un Capo Fazione può eseguire un permadeath interno senza ticket, purché motivato in modo coerente e credibile.<br>
+              ● In caso di defezione o abbandono di una fazione, non è obbligatorio richiedere il permadeath.<br>
+              Tuttavia, in caso di tradimento, la fazione danneggiata può decidere, a sua discrezione, se procedere con una richiesta di permadeath.
+            </p>
+
+            <h4>18.1 Ferite Permanenti</h4>
+            <p>
+              ● È possibile infliggere ferite permanenti con almeno 1 motivazione RP valida, previa approvazione tramite ticket.
+            </p>
+
+            <h4>18.2 Invalidità temporanea</h4>
+            <p>
+              ● Per infliggere disabilità temporanee (es. zoppicare, tremori), è sufficiente 1 motivazione RP coerente, non è richiesto il consenso dello staff.
+            </p>
+          </section>
+
+          <!-- REGOLAMENTO GANG -->
+          <section id="gang" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO GANG</h3>
+            <p>
+              La sezione dedicata al regolamento delle Gang sarà disponibile a breve.
+            </p>
+          </section>
+
+          <!-- REGOLAMENTO POLIZIA -->
+          <section id="polizia" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO POLIZIA</h3>
+
+            <h4>11. REGOLAMENTO FORZE DELL’ORDINE (FDO)</h4>
+            <p>
+              • Prima di intervenire in un’azione è obbligatorio accettare la chiamata tramite il Dispatch Menu, per garantire una gestione bilanciata delle unità.<br>
+              • Le perquisizioni sono ammesse solo se:<br>
+              - Il soggetto ha precedenti penali;<br>
+              - È mascherato;<br>
+              - Viene colto in flagrante (es. guida di veicolo rubato);<br>
+              - Esiste una motivazione RP valida.<br>
+              • È sempre consentito l’uso di strumenti di controllo come etilometro, test antidroga e unità cinofila (K9).<br>
+              • La durata massima di un fermo o interrogatorio è di 45 minuti, salvo accordi espliciti IC tra le parti coinvolte.<br>
+              • In caso di arresto, è possibile assegnare una pena detentiva fino a un massimo di 40 minuti, a seconda della gravità dei reati.<br>
+              • È vietato vendere o cedere a terzi qualsiasi equipaggiamento FDO (come pistole combat o altri oggetti con dicitura “Materiale FDO”).<br>
+              • La raccolta di prove può avvenire solo utilizzando mezzi ufficiali autorizzati (es. Vapid Speedo o furgone approvato dallo staff).<br>
+              • Gli agenti possono iniziare un confronto armato solo in presenza di motivazioni RP chiare, oppure se il sospetto si rifugia in aree senza vie di fuga (vicoli ciechi, multipiani, parcheggi chiusi, ecc.).<br>
+              • Interpretare un agente corrotto è possibile solo previa autorizzazione tramite ticket.<br>
+              • Non è ammesso cercare attivamente basi fazione o casse criminali senza un’informazione IC concreta. In assenza di giustificazioni, l’azione sarà considerata metagame.<br>
+              • L’uso dell’elicottero è soggetto a restrizioni:<br>
+              - Vietato per localizzare piantagioni o attività criminali senza una soffiata IC verificabile;<br>
+              - Non può essere usato per bloccare soggetti coinvolti in crimini minori (es. rapine a negozietti o furti in casa).<br>
+              • Per le regole relative all’utilizzo di video e bodycam come prove, si veda la sezione 2.1 "Registrazioni video, GoPro e Bodycam".
+            </p>
+          </section>
+
+          <!-- REGOLAMENTO MEDICI -->
+          <section id="medici" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO MEDICI</h3>
+
+            <h4>10. REGOLAMENTO MEDICI</h4>
+            <p>
+              • È severamente vietato per i medici detenere armi da fuoco. È però concesso loro utilizzare il taser in caso di estrema necessità, come legittima difesa.<br>
+              • I medici sono una fazione neutrale. Ciò significa che, durante il servizio, non possono essere di parte e devono sempre offrire assistenza. Essere neutrali offre anche l’intoccabilità da parte degli altri giocatori. Ciò non significa che ne è permesso l’abuso.<br>
+              • Il medico non potrà mai testimoniare eventi o azioni che vede quando è in servizio.<br>
+              • Nella fase post rianimazione, il ferito è obbligato a simulare lo stato di shock, debolezza (ad esempio difficilmente un ferito potrà correre). Sarà dovere del medico fare i dovuti accertamenti sul posto (se lievi) o portandolo in ospedale (se gravi).<br>
+              • Nel caso in cui un medico ritenesse necessario ricoverare un paziente in ospedale, quest’ultimo non potrà rifiutarsi e sarà obbligato a recarsi in ospedale.<br>
+              • È obbligatorio chiamare i medici solo ad azione finita. Se così non fosse, il medico è obbligato a chiedere in RP (se possibile) o in OOC se l’azione è effettivamente finita.<br>
+              • Il medico, quando non in servizio, può effettuare qualsiasi tipo di azione legale / illegale. Ovviamente, se colto sul fatto, subirà il trattamento di un qualsiasi cittadino e sarà a discrezione del primario prendere eventuali provvedimenti disciplinari.<br>
+              • I medici potranno vendere le bende ma non i medikit e gli antibiotici, questi ultimi potranno essere però comprati nella farmacia. Per quanto riguarda i farmaci o sostanze atte alla creazione di droghe, potranno essere vendute sottobanco con il rischio RP di essere beccati. Il numero massimo di bende trasportabili da un player (non medico) è 5.<br>
+              • È obbligatorio una volta preso il servizio mettersi la divisa adatta e in caso si esca dal servizio timbrare il tesserino per uscire dal servizio e togliersi la divisa.
+            </p>
+          </section>
+
+          <!-- LAVORI NO WHITELISTATI (placeholder) -->
+          <section id="lavorinw" class="panel rule-detail" style="display:none;">
+            <h3>REGOLAMENTO LAVORI NO WHITELISTATI</h3>
+            <p>
+              • Rispetta i percorsi di farming e le zone dedicate.<br>
+              • È vietato ostacolare in modo illecito o seriale i lavoratori impegnati nei job legali.<br>
+              • È vietato qualsiasi tipo di farming AFK o sfruttamento di macro/script esterni.<br>
+              Ulteriori specifiche sui lavori no whitelist potranno essere integrate nel regolamento completo scaricabile.
+            </p>
           </section>
 
         </div>
@@ -406,6 +784,20 @@
       </aside>
 
     </div>
+
+    <!-- SEZIONE DOWNLOAD REGOLAMENTO COMPLETO -->
+    <section class="panel" style="margin-top:18px;">
+      <h3>Download Regolamento Completo</h3>
+      <p>
+        Puoi consultare il regolamento completo di Elite RP in formato PDF cliccando sul link seguente:
+      </p>
+      <p>
+        <a href="https://docs.google.com/document/d/1z9LHpCMnLbEN8jG-lWUS14HJ5JVDkCyrGtJXUXYzmNU/edit?usp=sharing" target="_blank"><strong>➡ Apri / scarica il regolamento integrale (PDF)</strong></a>
+      </p>
+      <p style="color:var(--muted);font-size:14px;">
+        (Sostituisci <code>LINK_AL_REGOLAMENTO_COMPLETO</code> con il link al file caricato sul tuo Google Drive.)
+      </p>
+    </section>
 
     <section class="panel" style="margin-top:18px;">
       <h3>Note</h3>
@@ -428,13 +820,92 @@
     (function(){
       const cards = document.querySelectorAll('.rule-card');
       const details = document.querySelectorAll('.rule-detail');
+      const search = document.getElementById('ruleSearch');
+      const clear = document.getElementById('clearSearch');
+
+      // Salvo l'HTML originale di ogni sezione per poter rimuovere gli highlight
+      const originalHTML = {};
+      details.forEach(d => {
+        originalHTML[d.id] = d.innerHTML;
+      });
 
       function showSection(id){
-        details.forEach(d => d.style.display = (d.id === id ? 'block' : 'none'));
-        cards.forEach(c => c.classList.toggle('active', c.dataset.target === id));
-        history.replaceState(null, '', '#' + id);
+        details.forEach(d => {
+          d.style.display = (d.id === id ? 'block' : 'none');
+        });
+        cards.forEach(c => {
+          c.classList.toggle('active', c.dataset.target === id);
+        });
+        if (id) {
+          history.replaceState(null, '', '#' + id);
+        }
       }
 
+      // Funzione per "pulire" gli highlight e ripristinare l'HTML originale
+      function resetHighlights() {
+        details.forEach(d => {
+          if (originalHTML[d.id]) {
+            d.innerHTML = originalHTML[d.id];
+          }
+        });
+      }
+
+      // Escape per l'uso sicuro nel RegExp
+      function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      // Ricerca full-text: evidenzia e mostra il primo quadrante che contiene la parola
+      function searchInRules(termRaw) {
+        const term = termRaw.trim().toLowerCase();
+
+        // Ripristina testo e rimuove classi di match
+        resetHighlights();
+        cards.forEach(c => c.classList.remove('match'));
+
+        if (!term) {
+          // Se la barra è vuota torno semplicemente al primo quadrante
+          const firstCard = cards[0];
+          if (firstCard) showSection(firstCard.dataset.target);
+          return;
+        }
+
+        let firstMatchId = null;
+
+        details.forEach(section => {
+          const text = section.textContent.toLowerCase();
+          const id = section.id;
+          const card = document.querySelector('.rule-card[data-target="' + id + '"]');
+
+          if (text.includes(term)) {
+            // Evidenzia la parola nella sezione
+            const html = originalHTML[id];
+            const safe = escapeRegExp(term);
+            const regex = new RegExp('(' + safe + ')', 'gi');
+            section.innerHTML = html.replace(regex, '<mark class="hl">$1</mark>');
+
+            // Segna il quadrante come "match" nella tray
+            if (card) {
+              card.classList.add('match');
+            }
+
+            // Prima sezione trovata => ci saltiamo
+            if (!firstMatchId) {
+              firstMatchId = id;
+            }
+          }
+        });
+
+        if (firstMatchId) {
+          showSection(firstMatchId);
+        } else {
+          // Nessun risultato: mostro comunque il primo quadrante
+          const firstCard = cards[0];
+          if (firstCard) showSection(firstCard.dataset.target);
+        }
+      }
+
+      // Click sui quadranti
       cards.forEach(card =>{
         card.addEventListener('click', e =>{
           e.preventDefault();
@@ -442,6 +913,7 @@
         });
       });
 
+      // Se c'è un hash in URL, apri quella sezione, altrimenti la prima
       const initial = location.hash.replace('#','');
       if(initial && document.getElementById(initial)){
         showSection(initial);
@@ -449,21 +921,14 @@
         showSection(cards[0].dataset.target);
       }
 
-      const search = document.getElementById('ruleSearch');
-      const clear = document.getElementById('clearSearch');
+      // Eventi ricerca
+      search.addEventListener('input', () => {
+        searchInRules(search.value);
+      });
 
-      function filter(){
-        const term = search.value.toLowerCase();
-        cards.forEach(card =>{
-          const show = !term || card.textContent.toLowerCase().includes(term);
-          card.style.display = show ? '' : 'none';
-        });
-      }
-
-      search.addEventListener('input', filter);
-      clear.addEventListener('click', ()=>{
-        search.value='';
-        filter();
+      clear.addEventListener('click', () => {
+        search.value = '';
+        searchInRules('');
       });
 
       /* SCROLL FRECCE */
@@ -476,11 +941,10 @@
 
       /* ROTELLINA DEL MOUSE (solo quando il cursore è sopra la tray) */
       tray.addEventListener('wheel', function(e){
-    // Sempre orizzontale, blocca lo scroll verticale
-    e.preventDefault();
-    const amount = (e.deltaY !== 0 ? e.deltaY : e.deltaX) * 2;
-tray.scrollLeft += amount;
-}, { passive:false });
+        e.preventDefault();
+        const amount = (e.deltaY !== 0 ? e.deltaY : e.deltaX) * 2;
+        tray.scrollLeft += amount;
+      }, { passive:false });
 
       /* SCROLLBAR APPARE SOLO DURANTE SCROLL */
       let timeout;
